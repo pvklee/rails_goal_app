@@ -1,0 +1,32 @@
+<h1><%=@goal.user.username%>'s goal is <%=@goal.goal_title%></h1>
+
+<ul>
+    <li><%=@goal.goal_description%></li>
+</ul>
+
+<form action="<%=user_path(@goal.user)%>" method="get">
+    <input type="submit" value="Back to <%=@goal.user.username%>'s goal page!">
+</form>
+
+<h2>comments</h2>
+<ul>
+    <%@goal.received_goal_comments.each do |comment|%>
+        <li>
+            <%=comment.comment_text%>
+        </li>
+    <%end%>
+</ul>
+
+
+<form action="<%=goal_comments_path%>" method="post">
+    <h3>New Commentt:</h3>
+    <%= render 'shared/errors' %>
+    <%= auth_token %>
+    <input type="hidden" name="goal_comment[goal_id]" value="<%=@goal.id%>">
+    <label>Comment:
+        <textarea id="goal_comment_text" name = "goal_comment[comment_text]"></textarea>
+    </label>
+    <br>
+
+    <input type="submit" value="Submit Comment">
+</form>

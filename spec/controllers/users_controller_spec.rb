@@ -22,9 +22,9 @@ RSpec.describe UsersController, type: :controller do
         end
 
         context "with valid params" do
-            it "redirects user to goals page" do
+            it "redirects user to users list page" do
                 post :create, params: { user: { username: 'username', password: 'password' } }
-                expect(response).to redirect_to(goals_path)
+                expect(response).to render_template("index")
             end
         end
     end

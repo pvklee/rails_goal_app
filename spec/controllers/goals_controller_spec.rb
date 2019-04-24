@@ -28,7 +28,7 @@ RSpec.describe GoalsController, type: :controller do
 
 			it "redirects to log in page" do
 				get :new
-				expect(response).to redirect_to(new_user_url)
+				expect(response).to redirect_to(new_session_url)
 			end
 		end
     end
@@ -41,7 +41,7 @@ RSpec.describe GoalsController, type: :controller do
 
 			it "redirects to log in page" do
 				post :create, params: { goal: {} }
-				expect(response).to redirect_to(new_user_url)
+				expect(response).to redirect_to(new_session_url)
 			end
 		end
 
@@ -59,9 +59,9 @@ RSpec.describe GoalsController, type: :controller do
 			end
 
 			context "with valid params" do
-				it "redirects user to goals page" do
-					post :create, params: { goal: { goal_title: 'title', is_private: false, is_completed: false} }
-					expect(response).to redirect_to(goal_url(Goal.last))
+				it "redirects user to users page" do
+					post :create, params: { goal: { goal_title: 'title', goal_description: 'description', is_private: false, is_completed: false} }
+					expect(response).to redirect_to(user_goal_url(kevin, Goal.last))
 				end
 			end
 		end

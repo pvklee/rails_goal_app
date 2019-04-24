@@ -7,6 +7,11 @@ class User < ApplicationRecord
     
     after_initialize :ensure_session_token
 
+    has_many :goals, class_name: 'Goal', foreign_key: :user_id
+    has_many :authored_user_comments, class_name: 'UserComment', foreign_key: :commenter_id
+    has_many :received_user_comments, class_name: 'UserComment', foreign_key: :user_id
+    has_many :authored_goal_comments, class_name: 'GoalComment', foreign_key: :commenter_id
+
     def password=(password)
         @password = password
         self.password_digest = BCrypt::Password.create(password)

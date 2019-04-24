@@ -1,0 +1,28 @@
+<form action="<%=goals_path%>" method="post">
+    <%= auth_token %>
+
+    <label>Title
+        <input id="goal_title" name="goal[goal_title]" type="text">
+    </label>
+    <br>
+ 
+    <label> Description
+        <textarea id="goal_description" name = "goal[goal_description]"><%= goal.goal_description %></textarea>
+    </label>
+    <br>
+
+    <label>Private?
+        <input type="checkbox" name="goal[is_private]"
+        <%= 'checked="true"' if goal.is_private %>>
+    </label>
+    <br>
+
+    <label>Completed?
+        <input type="checkbox" name="goal[is_completed]"
+        <%= 'checked="true"' if goal.is_completed %>>
+    </label>
+    <br>
+
+    <input type="submit" value="Create goal">
+
+</form>
