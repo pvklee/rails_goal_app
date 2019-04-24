@@ -1,0 +1,15 @@
+<% if logged_in? %>
+    Hey <%= current_user.username%>! 
+    <form action="<%= session_path %>" method="post">
+        <%= auth_token %>
+        <input name="_method" value="delete" type="hidden">
+        <input type="submit" value="Log Out"> 
+    </form>
+<% else %>
+    <form action="<%= new_session_path %>" method="get">
+        <input type="submit" value="Log In"> 
+    </form>
+    <form action="<%= new_user_path %>" method="get">
+        <input type="submit" value="Sign Up"> 
+    </form>
+<% end %>

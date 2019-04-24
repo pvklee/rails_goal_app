@@ -1,0 +1,17 @@
+<form action="<%=users_path%>" method="post">
+    <%= auth_token %>
+    <label for="user_username">Username</label>
+    <input id="user_username"
+        name="user[username]"
+        type="text">
+    <br>
+ 
+    <label for="user_password">Password</label>
+    <input id="user_password"
+        name="user[password]"
+        type="text">
+    <br>   
+
+    <input type="submit" value="Create User">
+
+</form>
